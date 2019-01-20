@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        addFragment(RepoListFragment(), R.id.container)
+        if(savedInstanceState == null)
+            addFragment(RepoListFragment(), R.id.container)
     }
 
 }

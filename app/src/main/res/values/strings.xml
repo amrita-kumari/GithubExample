@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Github</string>
+    <string name="retry">Retry</string>
+    <string name="error_message">An error has occurred. Please try again.</string>
 </resources>

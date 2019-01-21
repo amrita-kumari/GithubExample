@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.github.ui.RepoViewModel" />
+            type="com.example.github.viewmodel.RepoViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

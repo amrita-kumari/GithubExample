@@ -1,14 +1,17 @@
 package com.example.github.ui
 
 import android.databinding.DataBindingUtil
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.github.R
 import com.example.github.databinding.ItemRepoBinding
 import com.example.github.model.Repo
+import com.example.github.utils.replaceFragment
+import com.example.github.viewmodel.RepoViewModel
 
-class RepoListAdapter(private val itemClickListener: ItemClickListener) : RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
+class RepoListAdapter() : RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
     private lateinit var repoList: List<Repo>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoListAdapter.ViewHolder {
@@ -18,7 +21,7 @@ class RepoListAdapter(private val itemClickListener: ItemClickListener) : Recycl
     }
 
     override fun onBindViewHolder(holder: RepoListAdapter.ViewHolder, position: Int) {
-        holder.bind(repoList[position], itemClickListener)
+        holder.bind(repoList[position])
     }
 
     override fun getItemCount(): Int {
@@ -35,12 +38,13 @@ class RepoListAdapter(private val itemClickListener: ItemClickListener) : Recycl
         private val viewModel = RepoViewModel()
 
         fun bind(
-            repo: Repo,
-            itemClickListener: ItemClickListener
+            repo: Repo
         ) {
             viewModel.bind(repo)
             binding.viewModel = viewModel
-            itemView.setOnClickListener { itemClickListener.onItemClick(repo) }
+            itemView.setOnClickListener {
+                (itemView.context!! as AppCompatActivity).replaceFragment(RepoDetailFragment.newInstance(repo), R.id.container)
+            }
         }
 
 

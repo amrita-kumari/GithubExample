@@ -5,7 +5,7 @@
         <import type="android.view.View"/>
         <variable
                 name="viewModel"
-                type="com.example.github.ui.RepoListViewModel"/>
+                type="com.example.github.viewmodel.RepoListViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

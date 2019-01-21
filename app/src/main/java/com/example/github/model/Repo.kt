@@ -8,7 +8,6 @@ data class Repo(val id: Int,
                 val description : String,
                 val language : String,
                 @SerializedName("stargazers_count") val stars : Long,
-                @SerializedName("updated_at") val updated : String,
                 val owner : Owner,
                 val license : License) : Serializable
 

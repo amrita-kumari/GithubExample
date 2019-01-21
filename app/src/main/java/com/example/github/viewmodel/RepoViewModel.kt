@@ -1,12 +1,8 @@
-package com.example.github.ui
+package com.example.github.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import com.example.github.base.BaseViewModel
 import com.example.github.model.Repo
-import android.databinding.BindingAdapter
-
-
-
 
 class RepoViewModel: BaseViewModel() {
     val repoTitle = MutableLiveData<String>()

@@ -1,40 +1,35 @@
-package com.example.github.ui
+package com.example.github.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import android.util.Log
 import android.view.View
 import com.example.github.R
 import com.example.github.base.BaseViewModel
 import com.example.github.model.RepoResponse
 import com.example.github.network.RepoApi
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.example.github.ui.RepoListAdapter
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
-import com.example.github.model.Repo
+import io.reactivex.Scheduler
+import javax.inject.Named
 
 
-class RepoListViewModel : BaseViewModel(), RepoListAdapter.ItemClickListener {
+class RepoListViewModel
+@Inject constructor(private val repoApi: RepoApi,
+                    @Named("IO") val subscribeOnScheduler :Scheduler, @Named("Main") val observeOnScheduler: Scheduler)
+    : BaseViewModel() {
 
-    @Inject
-    lateinit var repoApi: RepoApi
     private lateinit var disposable : Disposable
-    val repoListAdapter: RepoListAdapter = RepoListAdapter(this)
+    val repoListAdapter: RepoListAdapter = RepoListAdapter()
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadRepo() }
-    val onItemClick: MutableLiveData<Repo> = MutableLiveData()
 
     val loading : MutableLiveData<Boolean> = MutableLiveData()
-    
-    init {
-        loadRepo()
-    }
 
-    private fun loadRepo() {
+    fun loadRepo() {
         loading.value = true
         disposable = repoApi.getRepo()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
+            .observeOn(observeOnScheduler)
+            .subscribeOn(subscribeOnScheduler)
             .subscribe({result -> onRepoLoaded(result)},{onRepoLoadFailed()})
     }
 
@@ -50,12 +45,6 @@ class RepoListViewModel : BaseViewModel(), RepoListAdapter.ItemClickListener {
         }
 
     }
-
-    override fun onItemClick(repo: Repo) {
-        Log.e("TAG","------repo = "+repo.fullName)
-        onItemClick.value = repo
-    }
-
 
     override fun onCleared() {
         super.onCleared()

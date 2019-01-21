@@ -11,7 +11,6 @@ import com.example.github.R
 import com.example.github.databinding.FragmentDetailBinding
 import com.example.github.model.Repo
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_detail.*
 
 class RepoDetailFragment : Fragment() {
 
@@ -26,7 +25,7 @@ class RepoDetailFragment : Fragment() {
 
         binding.repo = arguments?.getSerializable(REPO) as Repo
 
-        Picasso.get()
+        Picasso.with(activity)
             .load(binding.repo?.owner?.avatar)
             .resize(100, 100)
             .centerCrop()

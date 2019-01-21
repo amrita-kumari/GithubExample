@@ -4,16 +4,20 @@ import com.example.github.BuildConfig
 import com.example.github.network.RepoApi
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
+import javax.inject.Singleton
 
-@Module
-object NetworkModule {
+@Module(includes = [RepoListViewModelModule::class])
+class AppModule {
 
     @Provides
+    @Singleton
     fun provideRepoApi(retrofit: Retrofit) = retrofit.create(RepoApi::class.java)
 
     @Provides
@@ -25,4 +29,11 @@ object NetworkModule {
             .build()
     }
 
+    @Provides @Named("IO")
+    @Singleton
+    fun provideIOScheduler(): Scheduler = Schedulers.io()
+
+    @Provides @Named("Main")
+    @Singleton
+    fun providesMainThreadScheduler(): Scheduler = AndroidSchedulers.mainThread()
 }

@@ -1,6 +1,6 @@
 package com.example.github.di
 
-import com.example.github.base.BaseViewModel
+import android.arch.lifecycle.ViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
 
@@ -12,4 +12,4 @@ import kotlin.reflect.KClass
 )
 @Retention(AnnotationRetention.RUNTIME)
 @MapKey
-annotation class ViewModelKey(val value: KClass<out BaseViewModel>)
+annotation class ViewModelKey(val value: KClass<out ViewModel>)

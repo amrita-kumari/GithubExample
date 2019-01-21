@@ -1,7 +1,7 @@
 package com.example.github.di.module
 
+import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.example.github.base.BaseViewModel
 import com.example.github.di.ViewModelKey
 import com.example.github.utils.viewmodelfactory.ViewModelFactory
 import com.example.github.viewmodel.RepoListViewModel
@@ -15,7 +15,7 @@ abstract class RepoListViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(RepoListViewModel::class)
-    abstract fun bindRepoListViewModel(viewModel: RepoListViewModel): BaseViewModel
+    abstract fun bindRepoListViewModel(viewModel: RepoListViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

@@ -1,10 +1,10 @@
 package com.example.github.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
-import com.example.github.base.BaseViewModel
+import android.arch.lifecycle.ViewModel
 import com.example.github.model.Repo
 
-class RepoViewModel: BaseViewModel() {
+class RepoViewModel: ViewModel() {
     val repoTitle = MutableLiveData<String>()
     val repoDescription = MutableLiveData<String>()
     val stars = MutableLiveData<String>()

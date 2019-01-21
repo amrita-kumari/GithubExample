@@ -1,9 +1,9 @@
 package com.example.github.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import android.view.View
 import com.example.github.R
-import com.example.github.base.BaseViewModel
 import com.example.github.model.RepoResponse
 import com.example.github.network.RepoApi
 import com.example.github.ui.RepoListAdapter
@@ -16,7 +16,7 @@ import javax.inject.Named
 class RepoListViewModel
 @Inject constructor(private val repoApi: RepoApi,
                     @Named("IO") val subscribeOnScheduler :Scheduler, @Named("Main") val observeOnScheduler: Scheduler)
-    : BaseViewModel() {
+    : ViewModel() {
 
     private lateinit var disposable : Disposable
     val repoListAdapter: RepoListAdapter = RepoListAdapter()

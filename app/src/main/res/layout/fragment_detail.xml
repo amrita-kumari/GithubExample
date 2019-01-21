@@ -53,18 +53,19 @@
                 android:drawablePadding="5dp"
                 android:textStyle="bold"
                 android:drawableStart="@drawable/ic_language"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/post_body"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintHorizontal_bias="0.067" app:layout_constraintEnd_toStartOf="@+id/ownerValue"/>
+                app:layout_constraintEnd_toStartOf="@+id/ownerValue"
+                app:layout_constraintHorizontal_bias="0.0"/>
         <TextView
                 android:text="@{repo.owner.login}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ownerValue"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/post_body"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
@@ -83,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintHorizontal_bias="0.067"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/languageValue"/>
         <TextView
                 android:text="@{repo.language}"
@@ -109,7 +110,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintHorizontal_bias="0.069"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/starValue"/>
         <TextView
                 android:text="@{String.valueOf(repo.stars)}"
@@ -135,7 +136,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintHorizontal_bias="0.067"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toStartOf="@+id/licenseValue"/>
         <TextView
                 android:text="@{repo.license.name}"
